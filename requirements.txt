@@ -1,0 +1,24 @@
+pandas
+numpy
+tqdm
+langdetect
+nltk
+
+# Scraping
+selenium
+webdriver-manager
+beautifulsoup4
+lxml
+facebook-scraper
+
+# NLP / Sentiment Analysis
+transformers
+torch
+textblob
+
+# Viz / App
+matplotlib
+plotly
+wordcloud
+streamlit
+
