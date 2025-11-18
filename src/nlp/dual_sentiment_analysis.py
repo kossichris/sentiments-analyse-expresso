@@ -62,7 +62,7 @@ def dual_sentiment_analysis(input_file="data/sentiment_expresso.csv",
     Analyse de sentiments avec TextBlob et BERT sur le même dataset.
     Génère un CSV avec les résultats des deux modèles.
     """
-    print("📊 Chargement des données...")
+    print("Chargement des données...")
     df = pd.read_csv(input_file)
     
     # Détecter la colonne de texte
@@ -75,11 +75,11 @@ def dual_sentiment_analysis(input_file="data/sentiment_expresso.csv",
     if text_col is None:
         raise ValueError("Aucune colonne de texte trouvée dans le fichier.")
     
-    print(f"✅ Colonne de texte détectée : {text_col}")
-    print(f"📝 {len(df)} textes à analyser")
+    print(f"Colonne de texte détectée : {text_col}")
+    print(f"{len(df)} textes à analyser")
     
     # Initialisation du pipeline BERT
-    print("\n🤖 Chargement du modèle BERT...")
+    print("\nChargement du modèle BERT...")
     sentiment_pipeline = pipeline(
         "sentiment-analysis",
         model="nlptown/bert-base-multilingual-uncased-sentiment",
@@ -87,13 +87,13 @@ def dual_sentiment_analysis(input_file="data/sentiment_expresso.csv",
     )
     
     # Analyse avec TextBlob
-    print("\n📖 Analyse avec TextBlob...")
+    print("\n Analyse avec TextBlob...")
     df[['sentiment_textblob', 'score_textblob']] = df[text_col].apply(
         lambda x: pd.Series(analyze_with_textblob(x))
     )
     
     # Analyse avec BERT
-    print("🤖 Analyse avec BERT...")
+    print(" Analyse avec BERT...")
     df[['sentiment_bert', 'score_bert']] = df[text_col].apply(
         lambda x: pd.Series(analyze_with_bert(x, sentiment_pipeline))
     )
@@ -102,12 +102,12 @@ def dual_sentiment_analysis(input_file="data/sentiment_expresso.csv",
     df['modeles_accord'] = df['sentiment_textblob'] == df['sentiment_bert']
     
     # Sauvegarde
-    print(f"\n💾 Sauvegarde des résultats dans {output_file}")
+    print(f"\n Sauvegarde des résultats dans {output_file}")
     df.to_csv(output_file, index=False, encoding='utf-8')
     
     # Statistiques
     print("\n" + "="*60)
-    print("📊 RÉSUMÉ DE L'ANALYSE")
+    print(" RÉSUMÉ DE L'ANALYSE")
     print("="*60)
     
     print("\n🔹 Répartition TextBlob :")
@@ -117,9 +117,9 @@ def dual_sentiment_analysis(input_file="data/sentiment_expresso.csv",
     print(df['sentiment_bert'].value_counts())
     
     accord_rate = (df['modeles_accord'].sum() / len(df)) * 100
-    print(f"\n🤝 Taux d'accord entre les modèles : {accord_rate:.2f}%")
+    print(f"\n Taux d'accord entre les modèles : {accord_rate:.2f}%")
     
-    print("\n✅ Analyse terminée avec succès !")
+    print("\n Analyse terminée avec succès !")
     return df
 
 

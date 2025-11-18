@@ -6,14 +6,14 @@ def analyse_sentiments(input_file="data/sentiment_dual.csv", output_file="data/s
     df = pd.read_csv(input_file)
 
     # Charger le modèle Hugging Face
-    print("📦 Chargement du modèle...")
+    print(" Chargement du modèle...")
     sentiment_pipeline = pipeline(
         "sentiment-analysis",
         model="nlptown/bert-base-multilingual-uncased-sentiment",
         tokenizer="nlptown/bert-base-multilingual-uncased-sentiment"
     )
 
-    print("🔍 Analyse des sentiments en cours...")
+    print(" Analyse des sentiments en cours...")
     sentiments = sentiment_pipeline(df["clean_text"].tolist(), truncation=True)
 
     # Ajouter les résultats dans le DataFrame
@@ -22,7 +22,7 @@ def analyse_sentiments(input_file="data/sentiment_dual.csv", output_file="data/s
 
     # Sauvegarde
     df.to_csv(output_file, index=False, encoding="utf-8-sig")
-    print(f"✅ Analyse terminée ! Fichier enregistré : {output_file}")
+    print(f" Analyse terminée ! Fichier enregistré : {output_file}")
 
     # Petit aperçu
     print(df[["clean_text", "sentiment_label", "sentiment_score"]].head())

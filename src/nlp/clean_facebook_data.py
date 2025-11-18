@@ -52,12 +52,12 @@ def main():
             df = df[df["clean_text"].str.len() > 0]
             df = df.reset_index(drop=True)
             df.to_csv(output_file, index=False, encoding="utf-8-sig")
-            print(f"✅ Fichier nettoyé enregistré : {output_file}")
+            print(f" Fichier nettoyé enregistré : {output_file}")
             print(df[["text", "clean_text"]].head())
         else:
-            print("❌ La colonne 'text' a été supprimée lors du nettoyage. Vérifiez le contenu du CSV.")
+            print(" La colonne 'text' a été supprimée lors du nettoyage. Vérifiez le contenu du CSV.")
     else:
-        print("❌ La colonne 'text' est absente du fichier. Vérifiez le CSV ou indiquez la colonne à nettoyer.")
+        print(" La colonne 'text' est absente du fichier. Vérifiez le CSV ou indiquez la colonne à nettoyer.")
 
 if __name__ == "__main__":
     main()
