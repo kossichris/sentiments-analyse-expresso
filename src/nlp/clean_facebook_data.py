@@ -30,8 +30,8 @@ def nettoyer_texte(texte):
     return " ".join(mots)
 
 def main():
-    # input_file = "data/facebook_expresso.csv"
-    # output_file = "data/facebook_expresso_clean.csv"
+    input_file = "data/facebook_expresso.csv"
+    output_file = "data/facebook_expresso_clean.csv"
     df = pd.read_csv(input_file)
     print("Colonnes du fichier :", list(df.columns))
     if "text" in df.columns:
