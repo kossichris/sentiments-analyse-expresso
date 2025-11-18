@@ -110,10 +110,10 @@ def dual_sentiment_analysis(input_file="data/sentiment_expresso.csv",
     print(" RÉSUMÉ DE L'ANALYSE")
     print("="*60)
     
-    print("\n🔹 Répartition TextBlob :")
+    print("\n Répartition TextBlob :")
     print(df['sentiment_textblob'].value_counts())
     
-    print("\n🔹 Répartition BERT :")
+    print("\n Répartition BERT :")
     print(df['sentiment_bert'].value_counts())
     
     accord_rate = (df['modeles_accord'].sum() / len(df)) * 100
